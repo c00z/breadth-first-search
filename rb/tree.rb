@@ -42,9 +42,16 @@ class Tree
   #   node.key > 4
   # end
   def breadth_first_search(target_key)
-    nil
-  end
-
+    queue = [self]
+    while !queue.empty?
+      p queue.map { |node| node.key}
+      current = queue.shift
+      if current.key == target_key
+        return current
+      end
+      queue = queue + current.children
+    end
+  return nil
 end
 
 my_tree = Tree.new('A')
